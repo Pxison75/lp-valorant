@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: #090c10;
+    --foreground: #f4f4f5;
+    --card: #111722;
+    --card-foreground: #ffffff;
+    --popover: #111722;
+    --popover-foreground: #ffffff;
+    --primary: #ff4655;
+    --primary-foreground: #ffffff;
+    --secondary: #1a2332;
+    --secondary-foreground: #e4e4e7;
+    --muted: #1c2636;
+    --muted-foreground: #94a3b8;
+    --accent: #00f5d4;
+    --accent-foreground: #090c10;
+    --destructive: #ef4444;
+    --destructive-foreground: #ffffff;
+    --border: #232f42;
+    --input: #1f2a3a;
+    --ring: #ff4655;
+    --twitch: #9146ff;
+  }
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  selection-background-color: #ff4655;
+  selection-color: #ffffff;
+}
+
+/* Valorant-style angled cuts */
+.val-cut-tl {
+  clip-path: polygon(14px 0, 100% 0, 100% 100%, 0 100%, 0 14px);
+}
+
+.val-cut-br {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%);
+}
+
+.val-cut-both {
+  clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+}
+
+.val-cut-corner {
+  clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px));
+}
+
+/* Valorant tactical grid background */
+.val-grid-pattern {
+  background-size: 36px 36px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 70, 85, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 70, 85, 0.05) 1px, transparent 1px);
+}
+
+.val-dots-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Glow utilities */
+.glow-red {
+  box-shadow: 0 0 25px -5px rgba(255, 70, 85, 0.45);
+}
+
+.glow-red-sm {
+  box-shadow: 0 0 12px -2px rgba(255, 70, 85, 0.35);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 25px -5px rgba(0, 245, 212, 0.45);
+}
+
+.glow-purple {
+  box-shadow: 0 0 25px -5px rgba(145, 70, 255, 0.45);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090c10;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1f2a3a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff4655;
+}
+
+/* Scanline animation */
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(1000%); }
+}
+
+.animate-scanline {
+  animation: scanline 8s linear infinite;
+}
+
+/* Pulsing radar */
+@keyframes radar-ping {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.08); opacity: 0.4; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.animate-radar {
+  animation: radar-ping 3s ease-in-out infinite;
+}
